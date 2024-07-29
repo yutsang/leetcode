@@ -128,6 +128,16 @@ def file_exists(title_slug):
     
     return False
 
+def get_question_number(title_slug):
+    pattern = f"submissions/*_{re.escape(title_slug)}.py"
+    matching_files = glob.glob(pattern)
+    if matching_files:
+        filename = os.path.basename(matching_files[0])
+        match = re.match(r'(\d+)_', filename)
+        if match:
+            return match.group(1)
+    return ""
+
 def extract_question_info(driver, url):
     question_number = None
     accepted_code = None
@@ -272,7 +282,7 @@ def main():
 
     # Add rows to the markdown table
     for index, row in submission.iterrows():
-        markdown_format += f"|{row['Question Number']}|{row['Finished Date']}|[{row['Question']}]({row['Question URL']+'/description/'})|<a href='https://github.com/yutsang/leetcode/blob/main/submissions/{row['Question Number']}_{row['Title Slug']}.py'>Python</a>|{row['Difficulty']}|\n"
+        markdown_format += f"|{get_question_number(row['Title Slug'])}|{row['Finished Date']}|[{row['Question']}]({row['Question URL']+'/description/'})|<a href='https://github.com/yutsang/leetcode/blob/main/submissions/{row['Question Number']}_{row['Title Slug']}.py'>Python</a>|{row['Difficulty']}|\n"
 
     # Save to a markdown file
     with open('README.md', 'w') as file:
