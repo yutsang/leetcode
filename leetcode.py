@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from bs4 import BeautifulSoup
 from tqdm import tqdm
+import textwrap
 import configparser
 import warnings
 
@@ -283,10 +284,10 @@ def main():
     print("Creating Markdown Files!")
     # Define the format for the markdown table
     # Initialize the markdown table
-    markdown_format = """\
+    markdown_format = textwrap.dedent("""\
         | Question # | Finished Date | Title | Submission | Difficulty |
         |:---:|:---:|:---:|:---:|:---:|
-        """
+        """)
 
     # Add rows to the markdown table
     for index, row in submission.iterrows():

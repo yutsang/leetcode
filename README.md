@@ -1,6 +1,6 @@
-        | Question # | Finished Date | Title | Submission | Difficulty |
-        |:---:|:---:|:---:|:---:|:---:|
-        |2891|2024-07-26|[Method Chaining](https://leetcode.com/problems/method-chaining/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2891_method-chaining.py)|Easy|
+| Question # | Finished Date | Title | Submission | Difficulty |
+|:---:|:---:|:---:|:---:|:---:|
+|2891|2024-07-26|[Method Chaining](https://leetcode.com/problems/method-chaining/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2891_method-chaining.py)|Easy|
 |2884|2024-07-26|[Modify Columns](https://leetcode.com/problems/modify-columns/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2884_modify-columns.py)|Easy|
 |525|2024-07-26|[Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/525_contiguous-array.py)|Medium|
 |2877|2024-07-26|[Create a DataFrame from List](https://leetcode.com/problems/create-a-dataframe-from-list/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2877_create-a-dataframe-from-list.py)|Easy|
