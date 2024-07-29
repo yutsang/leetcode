@@ -23,9 +23,13 @@ def login(config):
 
     # Initialize the ChromeDriver
     driver = webdriver.Chrome()
+    
+    
 
     # Navigate to LeetCode login page
     driver.get("https://leetcode.com/accounts/github/login/?next=%2F")
+    
+    time.sleep(2)
 
     # Wait for the 'Continue' button to be clickable and then click it
     continue_button = WebDriverWait(driver, 10).until(
@@ -49,6 +53,7 @@ def login(config):
         login_button = driver.find_element(By.NAME, "commit")
         login_button.click()
         print("Logged in successfully.")
+        time.sleep(3)
     except TimeoutException:
         print("Timeout while waiting for the login fields.")
         driver.quit()
@@ -278,12 +283,13 @@ def main():
     print("Creating Markdown Files!")
     # Define the format for the markdown table
     markdown_format = """| Question # | Finished Date | Title | Submission | Difficulty |
-    |:---:|:---:|:---:|:---:|:---:|"""
+    |:---:|:---:|:---:|:---:|:---:|
+    """
 
     # Add rows to the markdown table
     for index, row in submission.iterrows():
-        markdown_format += f"|{get_question_number(row['Title Slug'])}|{row['Finished Date']}|[{row['Question']}]({row['Question URL']+'/description/'})|<a href='https://github.com/yutsang/leetcode/blob/main/submissions/{row['Question Number']}_{row['Title Slug']}.py'>Python</a>|{row['Difficulty']}|\n"
-
+        question_number = get_question_number(row['Title Slug'])
+        markdown_format += f"|{question_number}|{row['Finished Date']}|[{row['Question']}]({row['Question URL']}/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/{question_number}_{row['Title Slug']}.py)|{row['Difficulty']}|\n"
     # Save to a markdown file
     with open('README.md', 'w') as file:
         file.write(markdown_format)
