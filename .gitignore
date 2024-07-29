@@ -3,13 +3,11 @@
 config.cfg 
 
 #submission record
-*.csv
-.*.csv
+#*.csv
+leetcode_submissions.csv
 
 #temp html reference file 
 *.html
-.*.html
 
 #trial notebook
 *.ipynb
-.*.ipynb
