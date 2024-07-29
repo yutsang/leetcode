@@ -141,7 +141,7 @@ def get_question_number(title_slug):
         match = re.match(r'(\d+)_', filename)
         if match:
             return match.group(1)
-    return ""
+    return 0
 
 def extract_question_info(driver, url):
     question_number = None
@@ -274,7 +274,7 @@ def main():
         #else:
             #tqdm.write(f"File already exists for question: {title_slug}")
         
-    if count >= 0: print(f'Created {count} .py file(s).')
+    if count > 0: print(f'Created {count} .py file(s).')
     else: print("All .py files have already created!")
 
     # Close the browser
@@ -282,6 +282,7 @@ def main():
     
     print("Creating Markdown Files!")
     # Define the format for the markdown table
+    # Initialize the markdown table
     markdown_format = """| Question # | Finished Date | Title | Submission | Difficulty |
     |:---:|:---:|:---:|:---:|:---:|
     """
@@ -289,7 +290,8 @@ def main():
     # Add rows to the markdown table
     for index, row in submission.iterrows():
         question_number = get_question_number(row['Title Slug'])
-        markdown_format += f"|{question_number}|{row['Finished Date']}|[{row['Question']}]({row['Question URL']}/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/{question_number}_{row['Title Slug']}.py)|{row['Difficulty']}|\n"
+        markdown_format += f"||{row['Finished Date']}|[{row['Question']}]({row['Question URL']}/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/unknown_{row['Title Slug']}.py)|{row['Difficulty']}|\n"
+
     # Save to a markdown file
     with open('README.md', 'w') as file:
         file.write(markdown_format)
