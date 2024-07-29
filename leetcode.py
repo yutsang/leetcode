@@ -261,17 +261,14 @@ def main():
         
     if count >= 0: print(f'Created {count} .py file(s).')
     else: print("All .py files have already created!")
-    # Display the updated DataFrame
-    submission.head(5)
+
     # Close the browser
     driver.quit()
     
     print("Creating Markdown Files!")
     # Define the format for the markdown table
-    markdown_format = """
-    | Question # | Finished Date | Title | Submission | Difficulty |
-    |:---:|:---:|:---:|:---:|:---:|
-    """
+    markdown_format = """| Question # | Finished Date | Title | Submission | Difficulty |
+    |:---:|:---:|:---:|:---:|:---:|"""
 
     # Add rows to the markdown table
     for index, row in submission.iterrows():
