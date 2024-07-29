@@ -147,9 +147,9 @@ def main():
         if not df_existing.empty:
             df_combined = pd.concat([df_new, df_existing]).drop_duplicates()
         else:
-            df_combined = df_new
+            df_combined = df_new.drop_duplicates()
         df_combined.to_csv(submission_records_filename, index=False)
-        print(f"Updated the CSV file with {len(new_submissions)} new submissions.")
+        print(f"Updated the CSV file with {len(df_new.drop_duplicates())} new submissions.")
         driver.quit()
     else:
         print("No new submissions found.")
