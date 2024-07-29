@@ -283,15 +283,16 @@ def main():
     print("Creating Markdown Files!")
     # Define the format for the markdown table
     # Initialize the markdown table
-    markdown_format = """| Question # | Title | Submission | Difficulty |
-|:---:|:---:|:---:|:---:|
-"""
+    markdown_format = """\
+        | Question # | Finished Date | Title | Submission | Difficulty |
+        |:---:|:---:|:---:|:---:|:---:|
+        """
 
     # Add rows to the markdown table
     for index, row in submission.iterrows():
         question_number = get_question_number(row['Title Slug'])
         if question_number:  # Ensure question_number is not None
-            markdown_format += f"|{question_number}|[{row['Question']}]({row['Question URL']}/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/{question_number}_{row['Title Slug']}.py)|{row['Difficulty']}|\n"
+            markdown_format += f"|{question_number}|{row['Finished Date']}|[{row['Question']}]({row['Question URL']}/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/{question_number}_{row['Title Slug']}.py)|{row['Difficulty']}|\n"
         else:
             print(f"Warning: No matching file found for title slug '{row['Title Slug']}'")
         
