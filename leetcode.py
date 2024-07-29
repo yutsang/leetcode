@@ -134,14 +134,14 @@ def file_exists(title_slug):
     return False
 
 def get_question_number(title_slug):
-    pattern = f"submissions/*_{re.escape(title_slug)}.py"
+    pattern = f"submissions/*_{title_slug}.py"
     matching_files = glob.glob(pattern)
     if matching_files:
         filename = os.path.basename(matching_files[0])
         match = re.match(r'(\d+)_', filename)
         if match:
             return match.group(1)
-    return 0
+    return None
 
 def extract_question_info(driver, url):
     question_number = None
@@ -283,15 +283,18 @@ def main():
     print("Creating Markdown Files!")
     # Define the format for the markdown table
     # Initialize the markdown table
-    markdown_format = """| Question # | Finished Date | Title | Submission | Difficulty |
-    |:---:|:---:|:---:|:---:|:---:|
-    """
+    markdown_format = """| Question # | Title | Submission | Difficulty |
+|:---:|:---:|:---:|:---:|
+"""
 
     # Add rows to the markdown table
     for index, row in submission.iterrows():
         question_number = get_question_number(row['Title Slug'])
-        markdown_format += f"||{row['Finished Date']}|[{row['Question']}]({row['Question URL']}/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/unknown_{row['Title Slug']}.py)|{row['Difficulty']}|\n"
-
+        if question_number:  # Ensure question_number is not None
+            markdown_format += f"|{question_number}|[{row['Question']}]({row['Question URL']}/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/{question_number}_{row['Title Slug']}.py)|{row['Difficulty']}|\n"
+        else:
+            print(f"Warning: No matching file found for title slug '{row['Title Slug']}'")
+        
     # Save to a markdown file
     with open('README.md', 'w') as file:
         file.write(markdown_format)
