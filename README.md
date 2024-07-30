@@ -1,3 +1,11 @@
+# Leetcode Study Log with Python Auto created by [autoleetcode](https://github.com/yutsang/leetcode)
+Update time:  {time}
+
+Progress: **{total_finished} / {total_problems}** problems (Easy: {easy}, Medium: {medium}, Hard: {hard})
+
+For tool handbook, please follow this [Usage Guide](https://github.com/yutsang/leetcode/blob/main/autoleetcode.md)
+For any bugs, please give me an [issue](https://github.com/yutsang/leetcode/issues).
+
 | Question # | Finished Date | Title | Submission | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|
 |88|2024-07-30|[Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/88_merge-sorted-array.py)|Easy|

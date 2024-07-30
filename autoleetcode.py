@@ -144,6 +144,14 @@ def get_question_number(title_slug):
             return match.group(1)
     return None
 
+def question_counter(submission_records:pd.DataFrame, problems:pd.DataFrame)->int:
+    total_count = int(len(problems))
+    easy = submission_records[submission_records['Difficulty']=='Easy']
+    medium = submission_records[submission_records['Difficulty']=='Medium']
+    hard = submission_records[submission_records['Difficulty']=='Hard']
+    return total_count, easy, medium, hard
+    
+
 def extract_question_info(driver, url):
     question_number = None
     accepted_code = None
@@ -284,7 +292,18 @@ def main():
     print("Creating Markdown Files!")
     # Define the format for the markdown table
     # Initialize the markdown table
+    time = datetime.now()
+    total_problems, easy, medium, hard = question_counter(submission, leetcode_problems)
+    total_finished = easy + medium + hard
     markdown_format = textwrap.dedent("""\
+        # Leetcode Study Log with Python Auto created by [autoleetcode](https://github.com/yutsang/leetcode)
+        Update time:  {time}
+
+        Progress: **{total_finished} / {total_problems}** problems (Easy: {easy}, Medium: {medium}, Hard: {hard})
+
+        For tool handbook, please follow this [Usage Guide](https://github.com/yutsang/leetcode/blob/main/autoleetcode.md)
+        For any bugs, please give me an [issue](https://github.com/yutsang/leetcode/issues).
+
         | Question # | Finished Date | Title | Submission | Difficulty |
         |:---:|:---:|:---:|:---:|:---:|
         """)
