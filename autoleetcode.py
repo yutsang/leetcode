@@ -294,19 +294,25 @@ def main():
     # Initialize the markdown table
     time = datetime.now()
     total_problems, easy, medium, hard = question_counter(submission, leetcode_problems)
-    total_finished = easy + medium + hard
-    markdown_format = textwrap.dedent(f"""\
-        # Leetcode Study Log with Python Auto created by [autoleetcode](https://github.com/yutsang/leetcode)
-        Update time:  {time}
+    markdown_format = '''
+# Leetcode Study Log with Python Auto created by [autoleetcode](https://github.com/yutsang/leetcode)
+Update time:  {time_display}
 
-        Progress: **{total_finished} / {total_problems}** problems (Easy: {easy}, Medium: {medium}, Hard: {hard})
+Progress: **{total_finished} / {problems}** problems (Easy: {easy_no}, Medium: {medium_no}, Hard: {hard_no})
 
-        For tool handbook, please follow this [Usage Guide](https://github.com/yutsang/leetcode/blob/main/autoleetcode.md)
-        For any bugs, please give me an [issue](https://github.com/yutsang/leetcode/issues).
+For tool handbook, please follow this [Usage Guide](https://github.com/yutsang/leetcode/blob/main/autoleetcode.md)
+For any bugs, please give me an [issue](https://github.com/yutsang/leetcode/issues).
 
-        | Question # | Finished Date | Title | Submission | Difficulty |
-        |:---:|:---:|:---:|:---:|:---:|
-        """)
+| Question # | Finished Date | Title | Submission | Difficulty |
+|:---:|:---:|:---:|:---:|:---:|
+'''.format(
+        time_display = time.strftime('%Y-%m-%d %H:%M:%S'),
+        total_finished = easy + medium + hard,
+        problems = total_problems,
+        easy_no = easy,
+        medium_no = medium,
+        hard_no = hard,
+    )
 
     # Add rows to the markdown table
     for index, row in submission.iterrows():

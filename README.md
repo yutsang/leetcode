@@ -1,18 +1,19 @@
-        # Leetcode Study Log with Python Auto created by [autoleetcode](https://github.com/yutsang/leetcode)
-        Update time:  2024-07-30 17:45:04.014299
 
-        Progress: **   Finished Date Question Question URL  ... Title Slug Difficulty Topic Tags
-0            NaN      NaN          NaN  ...        NaN        NaN        NaN
-1            NaN      NaN          NaN  ...        NaN        NaN        NaN
-2            NaN      NaN          NaN  ...        NaN        NaN        NaN
-3            NaN      NaN          NaN  ...        NaN        NaN        NaN
-4            NaN      NaN          NaN  ...        NaN        NaN        NaN
-..           ...      ...          ...  ...        ...        ...        ...
-88           NaN      NaN          NaN  ...        NaN        NaN        NaN
-89           NaN      NaN          NaN  ...        NaN        NaN        NaN
-90           NaN      NaN          NaN  ...        NaN        NaN        NaN
-91           NaN      NaN          NaN  ...        NaN        NaN        NaN
-92           NaN      NaN          NaN  ...        NaN        NaN        NaN
+# Leetcode Study Log with Python Auto created by [autoleetcode](https://github.com/yutsang/leetcode)
+Update time:  2024-07-30 17:54:16
+
+Progress: **   Finished Date Question Question URL Status Runtime  ... Submission Url  Title  Title Slug  Difficulty Topic Tags
+0            NaN      NaN          NaN    NaN     NaN  ...            NaN    NaN         NaN         NaN        NaN
+1            NaN      NaN          NaN    NaN     NaN  ...            NaN    NaN         NaN         NaN        NaN
+2            NaN      NaN          NaN    NaN     NaN  ...            NaN    NaN         NaN         NaN        NaN
+3            NaN      NaN          NaN    NaN     NaN  ...            NaN    NaN         NaN         NaN        NaN
+4            NaN      NaN          NaN    NaN     NaN  ...            NaN    NaN         NaN         NaN        NaN
+..           ...      ...          ...    ...     ...  ...            ...    ...         ...         ...        ...
+88           NaN      NaN          NaN    NaN     NaN  ...            NaN    NaN         NaN         NaN        NaN
+89           NaN      NaN          NaN    NaN     NaN  ...            NaN    NaN         NaN         NaN        NaN
+90           NaN      NaN          NaN    NaN     NaN  ...            NaN    NaN         NaN         NaN        NaN
+91           NaN      NaN          NaN    NaN     NaN  ...            NaN    NaN         NaN         NaN        NaN
+92           NaN      NaN          NaN    NaN     NaN  ...            NaN    NaN         NaN         NaN        NaN
 
 [93 rows x 14 columns] / 3261** problems (Easy:    Finished Date  ...                                         Topic Tags
 4     2024-07-30  ...  Array, Hash Table, Divide and Conquer, Sorting...
@@ -115,11 +116,11 @@
 
 [16 rows x 14 columns])
 
-        For tool handbook, please follow this [Usage Guide](https://github.com/yutsang/leetcode/blob/main/autoleetcode.md)
-        For any bugs, please give me an [issue](https://github.com/yutsang/leetcode/issues).
+For tool handbook, please follow this [Usage Guide](https://github.com/yutsang/leetcode/blob/main/autoleetcode.md)
+For any bugs, please give me an [issue](https://github.com/yutsang/leetcode/issues).
 
-        | Question # | Finished Date | Title | Submission | Difficulty |
-        |:---:|:---:|:---:|:---:|:---:|
+| Question # | Finished Date | Title | Submission | Difficulty |
+|:---:|:---:|:---:|:---:|:---:|
 |2770|2024-07-30|[Maximum Number of Jumps to Reach the Last Index](https://leetcode.com/problems/maximum-number-of-jumps-to-reach-the-last-index/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2770_maximum-number-of-jumps-to-reach-the-last-index.py)|Medium|
 |123|2024-07-30|[Best Time to Buy and Sell Stock III](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/123_best-time-to-buy-and-sell-stock-iii.py)|Hard|
 |1345|2024-07-30|[Jump Game IV](https://leetcode.com/problems/jump-game-iv/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/1345_jump-game-iv.py)|Hard|
