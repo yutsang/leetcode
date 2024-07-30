@@ -146,9 +146,9 @@ def get_question_number(title_slug):
 
 def question_counter(submission_records:pd.DataFrame, problems:pd.DataFrame)->int:
     total_count = int(len(problems))
-    easy = submission_records[submission_records['Difficulty']=='Easy']
-    medium = submission_records[submission_records['Difficulty']=='Medium']
-    hard = submission_records[submission_records['Difficulty']=='Hard']
+    easy = int(len(submission_records[submission_records['Difficulty']=='Easy']))
+    medium = int(len(submission_records[submission_records['Difficulty']=='Medium']))
+    hard = int(len(submission_records[submission_records['Difficulty']=='Hard']))
     return total_count, easy, medium, hard
     
 
