@@ -300,7 +300,7 @@ Update time:  {time_display}
 
 Progress: **{total_finished} / {problems}** problems (Easy: {easy_no}, Medium: {medium_no}, Hard: {hard_no})
 
-For tool handbook, please follow this [Usage Guide](https://github.com/yutsang/leetcode/blob/main/autoleetcode.md)  
+For tool handbook, please follow this [Usage Guide](https://github.com/yutsang/leetcode/blob/main/autoleetcode.md).  
 For any bugs, please give me an [issue](https://github.com/yutsang/leetcode/issues).
 
 | Question # | Finished Date | Title | Submission | Difficulty |
