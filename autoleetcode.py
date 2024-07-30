@@ -11,9 +11,9 @@ from tqdm import tqdm
 import textwrap
 import configparser
 import warnings
+from time import sleep
 
 warnings.filterwarnings('ignore')
-
 
 def login(config):
 
@@ -263,7 +263,7 @@ def main():
         #if not question_number or not file_exists(question_number, title_slug):
         if not file_exists(title_slug):
             question_number, code, submission_url = extract_question_info(driver, row['Question URL'])
-            time.sleep(2)  # Be respectful with rate limiting
+            sleep(2)  # Be respectful with rate limiting
             
             if question_number and code:
                 file_name = f"submissions/{question_number}_{title_slug}.py"
@@ -295,7 +295,7 @@ def main():
     time = datetime.now()
     total_problems, easy, medium, hard = question_counter(submission, leetcode_problems)
     total_finished = easy + medium + hard
-    markdown_format = textwrap.dedent("""\
+    markdown_format = textwrap.dedent(f"""\
         # Leetcode Study Log with Python Auto created by [autoleetcode](https://github.com/yutsang/leetcode)
         Update time:  {time}
 
