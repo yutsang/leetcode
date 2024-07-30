@@ -1,7 +1,8 @@
 | Question # | Finished Date | Title | Submission | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|
-|2891|2024-07-26|[Method Chaining](https://leetcode.com/problems/method-chaining/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2891_method-chaining.py)|Easy|
+|88|2024-07-30|[Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/88_merge-sorted-array.py)|Easy|
 |2884|2024-07-26|[Modify Columns](https://leetcode.com/problems/modify-columns/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2884_modify-columns.py)|Easy|
+|2891|2024-07-26|[Method Chaining](https://leetcode.com/problems/method-chaining/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2891_method-chaining.py)|Easy|
 |525|2024-07-26|[Contiguous Array](https://leetcode.com/problems/contiguous-array/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/525_contiguous-array.py)|Medium|
 |2877|2024-07-26|[Create a DataFrame from List](https://leetcode.com/problems/create-a-dataframe-from-list/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2877_create-a-dataframe-from-list.py)|Easy|
 |2878|2024-07-26|[Get the Size of a DataFrame](https://leetcode.com/problems/get-the-size-of-a-dataframe/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2878_get-the-size-of-a-dataframe.py)|Easy|
@@ -11,10 +12,10 @@
 |2882|2024-07-26|[Drop Duplicate Rows](https://leetcode.com/problems/drop-duplicate-rows/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2882_drop-duplicate-rows.py)|Easy|
 |2883|2024-07-26|[Drop Missing Data](https://leetcode.com/problems/drop-missing-data/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2883_drop-missing-data.py)|Easy|
 |238|2024-07-26|[Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/238_product-of-array-except-self.py)|Medium|
-|2887|2024-07-26|[Fill Missing Data](https://leetcode.com/problems/fill-missing-data/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2887_fill-missing-data.py)|Easy|
 |2890|2024-07-26|[Reshape Data: Melt](https://leetcode.com/problems/reshape-data-melt/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2890_reshape-data-melt.py)|Easy|
 |2889|2024-07-26|[Reshape Data: Pivot](https://leetcode.com/problems/reshape-data-pivot/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2889_reshape-data-pivot.py)|Easy|
 |2888|2024-07-26|[Reshape Data: Concatenate](https://leetcode.com/problems/reshape-data-concatenate/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2888_reshape-data-concatenate.py)|Easy|
+|2887|2024-07-26|[Fill Missing Data](https://leetcode.com/problems/fill-missing-data/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2887_fill-missing-data.py)|Easy|
 |2886|2024-07-26|[Change Data Type](https://leetcode.com/problems/change-data-type/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2886_change-data-type.py)|Easy|
 |2885|2024-07-26|[Rename Columns](https://leetcode.com/problems/rename-columns/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/2885_rename-columns.py)|Easy|
 |31|2024-07-25|[Next Permutation](https://leetcode.com/problems/next-permutation/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/31_next-permutation.py)|Medium|
