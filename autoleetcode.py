@@ -242,7 +242,7 @@ def main():
     ###############
     #submission handling
     ###############
-    submission_records = pd.read_csv(submission_records_filename).sort_values(by='Finished Date', ascending=False)
+    submission_records = pd.read_csv(submission_records_filename).sort_values(by=['Finished Date', 'Question'], ascending=[False, False])
     leetcode_problems = pd.read_csv('leetcode_problems.csv')
 
     submission_records = submission_records[submission_records['Status']=='Accepted'].drop_duplicates(subset='Question URL', keep='first')
