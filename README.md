@@ -1,14 +1,23 @@
 
 # Leetcode Study Log with Python Auto created by [autoleetcode](https://github.com/yutsang/leetcode)
-Update time:  2024-07-30 18:06:58
+Update time:  2024-08-02 12:58:58
 
-Progress: **93 / 3261** problems (Easy: 40, Medium: 37, Hard: 16)
+Progress: **102 / 3261** problems (Easy: 41, Medium: 41, Hard: 20)
 
 For tool handbook, please follow this [Usage Guide](https://github.com/yutsang/leetcode/blob/main/autoleetcode.md).  
 For any bugs, please give me an [issue](https://github.com/yutsang/leetcode/issues).
 
 | Question # | Finished Date | Title | Submission | Difficulty |
 |:---:|:---:|:---:|:---:|:---:|
+|68|2024-08-01|[Text Justification](https://leetcode.com/problems/text-justification/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/68_text-justification.py)|Hard|
+|151|2024-08-01|[Reverse Words in a String](https://leetcode.com/problems/reverse-words-in-a-string/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/151_reverse-words-in-a-string.py)|Medium|
+|58|2024-08-01|[Length of Last Word](https://leetcode.com/problems/length-of-last-word/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/58_length-of-last-word.py)|Easy|
+|407|2024-07-31|[Trapping Rain Water II](https://leetcode.com/problems/trapping-rain-water-ii/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/407_trapping-rain-water-ii.py)|Hard|
+|42|2024-07-31|[Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/42_trapping-rain-water.py)|Hard|
+|380|2024-07-31|[Insert Delete GetRandom O(1)](https://leetcode.com/problems/insert-delete-getrandom-o1/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/380_insert-delete-getrandom-o1.py)|Medium|
+|274|2024-07-31|[H-Index](https://leetcode.com/problems/h-index/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/274_h-index.py)|Medium|
+|134|2024-07-31|[Gas Station](https://leetcode.com/problems/gas-station/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/134_gas-station.py)|Medium|
+|135|2024-07-31|[Candy](https://leetcode.com/problems/candy/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/135_candy.py)|Hard|
 |189|2024-07-30|[Rotate Array](https://leetcode.com/problems/rotate-array/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/189_rotate-array.py)|Medium|
 |80|2024-07-30|[Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/80_remove-duplicates-from-sorted-array-ii.py)|Medium|
 |88|2024-07-30|[Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/description/)|[Python](https://github.com/yutsang/leetcode/blob/main/submissions/88_merge-sorted-array.py)|Easy|

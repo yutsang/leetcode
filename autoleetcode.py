@@ -52,9 +52,11 @@ def login(config):
 
         # Click the login button
         login_button = driver.find_element(By.NAME, "commit")
+        time.sleep(20)
+        #longer sleep time for new 2FA settings before clicking
         login_button.click()
+        print("Check 2FA on Github App if applicable.")
         print("Logged in successfully.")
-        time.sleep(3)
     except TimeoutException:
         print("Timeout while waiting for the login fields.")
         driver.quit()
