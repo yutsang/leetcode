@@ -159,8 +159,8 @@ def collect_all_submissions(driver, recent_datetime, existing_urls, cutoff_date)
                     question_url = base_url + question_path
                     
                     # Convert relative time to absolute date
-                    finished_date = (recent_datetime - parse_relative_time(time_submitted)).date()
-
+                    finished_date = (datetime.now() - parse_relative_time(time_submitted)).date()
+                    
                     #print("checker:", question_url)
                     # Check if the question URL already exists in the existing URLs
                     #if question_url in existing_urls:
