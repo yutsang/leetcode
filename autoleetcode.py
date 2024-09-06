@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import chromedriver_autoinstaller
+from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 import textwrap
@@ -55,6 +56,16 @@ def login(config):
         login_button.click()
         print("Please finish login yourself!")
         time.sleep(1)
+        # Check for the "Use a passkey" link first
+        try:
+            use_passkey_link = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, "//a[@data-test-selector='webauthn-link']"))
+            )
+            use_passkey_link.click()
+            #print("Clicked on 'Use your passkey' link.")
+        except TimeoutException:
+            pass
+            #print("No 'Use your passkey' link found.")
         # **Add this block to click the passkey button**
         try:
             # Wait for the passkey button to be clickable and then click it
@@ -66,11 +77,13 @@ def login(config):
         except TimeoutException:
             print("Passkey button not found or not clickable.")
         time.sleep(15)
-        # Check if the current URL contains 'leetcode'
-        if "leetcode" in driver.current_url:
-            print("Login successful!")
-        else:
-            print("Login failed or not redirected to LeetCode.")
+        
+        # Wait until the user is redirected to LeetCode
+        WebDriverWait(driver, 30).until(lambda d: "leetcode" in d.current_url)
+        print("Login successful!")
+        
+        time.sleep(2)
+
     except TimeoutException:
         print("Timeout while waiting for the login fields.")
         driver.quit()
@@ -100,9 +113,14 @@ def scrape_page(driver, url):
         return ""
     return driver.page_source
 
-def collect_all_submissions(driver, recent_datetime, existing_urls):
+def collect_all_submissions(driver, recent_datetime, existing_urls, cutoff_date):
     page = 1
     all_data = []
+    
+    #Calculate the cutoff date for submissions
+    cutoff_date = recent_datetime - timedelta(days=1)  # One day before the last submission date
+    one_year_ago = recent_datetime - timedelta(days=366)  # One year ago
+    
     while True:
         url = f"https://leetcode.com/submissions/#/{page}"
         # Scroll to the bottom of the page to load more submissions
@@ -139,16 +157,28 @@ def collect_all_submissions(driver, recent_datetime, existing_urls):
                     language = cols[4].text.strip()
                     base_url = "https://leetcode.com/"
                     question_url = base_url + question_path
+                    
+                    # Convert relative time to absolute date
+                    finished_date = (recent_datetime - parse_relative_time(time_submitted)).date()
 
                     #print("checker:", question_url)
                     # Check if the question URL already exists in the existing URLs
-                    if question_url in existing_urls:
+                    #if question_url in existing_urls:
                     #    print("checker question_url", question_url)
-                    #    print("checker existing_urls", question_url[:5])
-                        print("All new submissions are now in the control csv.")
+                    #    print("checker question_path", question_path)
+                    #    print("All new submissions are now in the control csv.")
+                    #    return all_data
+                    
+                    # Stop if the finished date is before the cutoff date
+                    if finished_date < cutoff_date.date():
+                        print("Reached submissions older than the cutoff date.")
                         return all_data
-                    # Convert relative time to absolute date
-                    finished_date = (recent_datetime - parse_relative_time(time_submitted)).date()
+
+                    # Check if the question URL already exists in the existing URLs
+                    if question_url in existing_urls:
+                        print(f"Existing URL found: {question_url}")
+                        continue  # Skip to the next submission
+                    
                     all_data.append([finished_date, question, question_url, status, runtime, language])
             print(f"Successfully parsed page {page}")  # New printing statement
             # Check if "No more submissions." is present
@@ -257,13 +287,20 @@ def main():
     if os.path.exists(submission_records_filename):
         df_existing = pd.read_csv(submission_records_filename)
         existing_urls = set(df_existing['Question URL'])
+        # Get the most recent submission date from the existing records
+        recent_date_str = df_existing['Finished Date'].max()  # Get the latest date
+        recent_datetime = datetime.strptime(recent_date_str, '%Y-%m-%d')  # Convert to datetime
     else:
         df_existing = pd.DataFrame()
         existing_urls = set()
+        recent_datetime = datetime.now()  # If no records, use current time
+        
+    # Define the cutoff date for submissions (one day before the most recent submission)
+    cutoff_date = (recent_datetime - timedelta(days=1)).date()
     
     driver = login(config)
     print("Parsing new submission records")
-    new_submissions = collect_all_submissions(driver, recent_datetime, existing_urls)
+    new_submissions = collect_all_submissions(driver, recent_datetime, existing_urls, cutoff_date)
     if new_submissions:
         df_new = pd.DataFrame(new_submissions, columns=['Finished Date', 'Question', 'Question URL', 'Status', 'Runtime', 'Language'])
         if not df_existing.empty:
