@@ -54,8 +54,7 @@ def login(config):
         #longer sleep time for new 2FA settings before clicking
         login_button.click()
         print("Please finish login yourself!")
-        print("Check 2FA on Github App or press the passkey if applicable.")
-        time.sleep(2)
+        time.sleep(1)
         # **Add this block to click the passkey button**
         try:
             # Wait for the passkey button to be clickable and then click it
@@ -107,16 +106,17 @@ def collect_all_submissions(driver, recent_datetime, existing_urls):
     while True:
         url = f"https://leetcode.com/submissions/#/{page}"
         # Scroll to the bottom of the page to load more submissions
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(2)  # Wait for new content to load
+        #may not need to scroll
+        #driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(1)  # Wait for new content to load
         
         page_content = scrape_page(driver, url)
         
         #print("Page content preview:", page_content[:200])  # Print first 200 characters for inspection
         # Save the page content to a file
-        file_name = f"page_{page}.html"
-        with open(file_name, 'w', encoding='utf-8') as file:
-            file.write(page_content)
+        #file_name = f"page_{page}.html"
+        #with open(file_name, 'w', encoding='utf-8') as file:
+        #    file.write(page_content)
         
         if not page_content:
             print(f"Empty page encountered: {url}")
@@ -152,7 +152,7 @@ def collect_all_submissions(driver, recent_datetime, existing_urls):
                 print("Reached the end of submissions.")
                 break
         page += 1
-        time.sleep(5)  # Be respectful with rate limiting
+        time.sleep(3)  # Be respectful with rate limiting
     return all_data
 
 def file_exists(title_slug):
