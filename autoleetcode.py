@@ -133,15 +133,18 @@ def collect_all_submissions(driver, recent_datetime, existing_urls):
                     question_link = cols[1].find('a')
                     question = question_link.text.strip()
                     #print("checker: question name", question)
-                    question_path = question_link['href']
+                    question_path = question_link['href'].lstrip('/')
                     status = cols[2].text.strip()
                     runtime = cols[3].text.strip()
                     language = cols[4].text.strip()
-                    question_url = f"https://leetcode.com/{question_path}"
+                    base_url = "https://leetcode.com/"
+                    question_url = base_url + question_path
+
+                    #print("checker:", question_url)
                     # Check if the question URL already exists in the existing URLs
                     if question_url in existing_urls:
-                        print("checker question_url", question_url)
-                        print("checker existing_urls", question_url[:5])
+                    #    print("checker question_url", question_url)
+                    #    print("checker existing_urls", question_url[:5])
                         return all_data
                     # Convert relative time to absolute date
                     finished_date = (recent_datetime - parse_relative_time(time_submitted)).date()
