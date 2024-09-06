@@ -27,15 +27,12 @@ def login(config):
     chromedriver_autoinstaller.install()  # Automatically install the correct ChromeDriver
     driver = webdriver.Chrome()  # Now initialize the driver
     
-    
 
     # Navigate to LeetCode login page
     driver.get("https://leetcode.com/accounts/github/login/?next=%2F")
-    
-    time.sleep(2)
 
     # Wait for the 'Continue' button to be clickable and then click it
-    continue_button = WebDriverWait(driver, 10).until(
+    continue_button = WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Continue')]"))
     )
     continue_button.click()
@@ -43,7 +40,7 @@ def login(config):
     # Fill in the GitHub login form
     try:
         # Wait for the username field to be present
-        username_field = WebDriverWait(driver, 10).until(
+        username_field = WebDriverWait(driver, 5).until(
             EC.presence_of_element_located((By.ID, "login_field"))
         )
         password_field = driver.find_element(By.ID, "password")
@@ -54,11 +51,27 @@ def login(config):
 
         # Click the login button
         login_button = driver.find_element(By.NAME, "commit")
-        time.sleep(20)
         #longer sleep time for new 2FA settings before clicking
         login_button.click()
-        print("Check 2FA on Github App if applicable.")
-        print("Logged in successfully.")
+        print("Please finish login yourself!")
+        print("Check 2FA on Github App or press the passkey if applicable.")
+        time.sleep(2)
+        # **Add this block to click the passkey button**
+        try:
+            # Wait for the passkey button to be clickable and then click it
+            passkey_button = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, "//span[@data-target='webauthn-get.buttonText']"))
+            )
+            passkey_button.click()
+            print("Please click on the passkey button.")
+        except TimeoutException:
+            print("Passkey button not found or not clickable.")
+        time.sleep(10)
+        # Check if the current URL contains 'leetcode'
+        if "leetcode" in driver.current_url:
+            print("Login successful!")
+        else:
+            print("Login failed or not redirected to LeetCode.")
     except TimeoutException:
         print("Timeout while waiting for the login fields.")
         driver.quit()
@@ -93,7 +106,18 @@ def collect_all_submissions(driver, recent_datetime, existing_urls):
     all_data = []
     while True:
         url = f"https://leetcode.com/submissions/#/{page}"
+        # Scroll to the bottom of the page to load more submissions
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(2)  # Wait for new content to load
+        
         page_content = scrape_page(driver, url)
+        
+        #print("Page content preview:", page_content[:200])  # Print first 200 characters for inspection
+        # Save the page content to a file
+        file_name = f"page_{page}.html"
+        with open(file_name, 'w', encoding='utf-8') as file:
+            file.write(page_content)
+        
         if not page_content:
             print(f"Empty page encountered: {url}")
             break
@@ -101,19 +125,23 @@ def collect_all_submissions(driver, recent_datetime, existing_urls):
         soup = BeautifulSoup(page_content, 'html.parser')
         table = soup.find('table', class_='table')
         if table:
+            #print("checker, found table")
             for row in table.find_all('tr')[1:]:  # Skip the header row
                 cols = row.find_all('td')
                 if len(cols) == 5:
                     time_submitted = cols[0].text.strip()
                     question_link = cols[1].find('a')
                     question = question_link.text.strip()
+                    #print("checker: question name", question)
                     question_path = question_link['href']
                     status = cols[2].text.strip()
                     runtime = cols[3].text.strip()
                     language = cols[4].text.strip()
-                    question_url = f"https://leetcode.com{question_path}"
+                    question_url = f"https://leetcode.com/{question_path}"
                     # Check if the question URL already exists in the existing URLs
                     if question_url in existing_urls:
+                        print("checker question_url", question_url)
+                        print("checker existing_urls", question_url[:5])
                         return all_data
                     # Convert relative time to absolute date
                     finished_date = (recent_datetime - parse_relative_time(time_submitted)).date()
