@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
+import chromedriver_autoinstaller
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 import textwrap
@@ -22,8 +23,9 @@ def login(config):
     username = config.get('Credentials', 'username')
     password = config.get('Credentials', 'password')
 
-    # Initialize the ChromeDriver
-    driver = webdriver.Chrome()
+    # Initialize the ChromeDriver and Automatically updated
+    chromedriver_autoinstaller.install()  # Automatically install the correct ChromeDriver
+    driver = webdriver.Chrome()  # Now initialize the driver
     
     
 
