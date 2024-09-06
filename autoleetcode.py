@@ -65,7 +65,7 @@ def login(config):
             print("Please click on the passkey button.")
         except TimeoutException:
             print("Passkey button not found or not clickable.")
-        time.sleep(10)
+        time.sleep(15)
         # Check if the current URL contains 'leetcode'
         if "leetcode" in driver.current_url:
             print("Login successful!")
@@ -145,6 +145,7 @@ def collect_all_submissions(driver, recent_datetime, existing_urls):
                     if question_url in existing_urls:
                     #    print("checker question_url", question_url)
                     #    print("checker existing_urls", question_url[:5])
+                        print("All new submissions are now in the control csv.")
                         return all_data
                     # Convert relative time to absolute date
                     finished_date = (recent_datetime - parse_relative_time(time_submitted)).date()
